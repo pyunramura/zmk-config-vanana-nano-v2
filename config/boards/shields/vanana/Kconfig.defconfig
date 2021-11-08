@@ -4,6 +4,6 @@
 if SHIELD_VANANA_REV2
 
 config ZMK_KEYBOARD_NAME
-	default "Vanana Nice!Nano v2"
+	default "dELIKEEb Vanana"
 
 endif
