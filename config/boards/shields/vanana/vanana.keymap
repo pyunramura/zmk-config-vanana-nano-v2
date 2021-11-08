@@ -16,6 +16,7 @@
 #define LOWER   3
 #define RAISE   4
 #define ADJUST  5
+#define WORKMAN 6
 
 // / {
 //     behaviors {
@@ -38,56 +39,68 @@
 // ----------------------------------------------   ---------  -----------------------------------------------
 // | Esc   |   A  |   S  |   D  |   F   |   G   |   | Right |  |   H   |   J   |   K  |   L  |   ;   | Enter |
 // ----------------------------------------------   ---------  -----------------------------------------------
-// | Shift |   Z  |   X  |   C  |   V   |   B   |   | Left  |  |   N   |   M   |   ,  |   .  |   /   | "     |
+// | Shift |   Z  |   X  |   C  |   V   |   B   |   | Mute  |  |   N   |   M   |   ,  |   .  |   /   | "     |
 // ----------------------------------------------   ---------  -----------------------------------------------
 //         | Ctrl | GUI  |  Alt | Lower | Space |              | Enter | Raise | Alt  | Left | Right |
 //         --------------------------------------              ---------------------------------------
 // 
-
+// WORKMAN
+// ----------------------------------------------              -----------------------------------------------
+// |   `   |   1  |   2  |   3  |   4   |   5   |              |   6   |   7   |   8  |   9  |   0   | Bksp  |
+// ----------------------------------------------              -----------------------------------------------
+// | Tab   |   Q  |   D  |   R  |   W   |   B   |              |   J   |   F   |   U  |   P  |   ;   | \     |
+// ----------------------------------------------   ---------  -----------------------------------------------
+// | Esc   |   A  |   S  |   H  |   T   |   G   |   | Right |  |   Y   |   N   |   E  |   O  |   I   | Enter |
+// ----------------------------------------------   ---------  -----------------------------------------------
+// | Shift |   Z  |   X  |   M  |   C   |   V   |   | Mute  |  |   K   |   L   |   ,  |   .  |   /   | "     |
+// ----------------------------------------------   ---------  -----------------------------------------------
+//         | Ctrl | GUI  |  Alt | Lower | Space |              | Enter | Raise | Alt  | Left | Right |
+//         --------------------------------------              ---------------------------------------
+// 
 / {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &kp GRAV    &kp N1      &kp N2      &kp N3      &kp N4    &kp N5                    &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp BKSP
-                &kp TAB     &kp Q       &kp W       &kp E       &kp R     &kp T                     &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSLH
-                &kp ESC     &kp A       &kp S       &kp D       &kp F     &kp G         &kp RARW    &kp H       &kp J       &kp K       &kp L       &kp SCLN    &kp RET
-                &kp LSFT    &kp Z       &kp X       &kp C       &kp V     &kp B         &kp LARW    &kp N       &kp M       &kp CMMA    &kp DOT     &kp FSLH    &mt RSFT SQT
-                            &kp LCTL    &kp LGUI   &kp LALT     &mo LOWER &kp SPC                   &kp RET     &mo RAISE   &kp RALT    &kp LARW    &kp RARW
+                &kp GRAV    &kp N1      &kp N2      &kp N3      &kp N4    &kp N5                    &kp N6       &kp N7      &kp N8      &kp N9      &kp N0      &kp BKSP
+                &kp TAB     &kp Q       &kp W       &kp E       &kp R     &kp T                     &kp Y        &kp U       &kp I       &kp O       &kp P       &kp BSLH
+                &kp ESC     &kp A       &kp S       &kp D       &kp F     &kp G         &kp RARW    &kp H        &kp J       &kp K       &kp L       &kp SCLN    &kp RET
+                &kp LSFT    &kp Z       &kp X       &kp C       &kp V     &kp B         &kp C_MUTE  &kp N        &kp M       &kp CMMA    &kp DOT     &kp FSLH    &mt RSFT SQT
+                            &kp LCTL    &kp LGUI   &kp LALT     &mo LOWER &kp SPC                   &mt RSFT RET &mo RAISE   &kp RALT    &kp LARW    &kp RARW
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
         mod_layer {
             bindings = <
-                &trans      &trans      &trans      &trans      &trans      &trans                  &trans      &trans      &trans      &trans      &trans      &trans  
-                &trans      &trans      &trans      &trans      &trans      &trans                  &trans      &trans      &trans      &trans      &trans      &trans
-                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans 
-                            &trans      &trans      &trans      &trans      &kp SPC                 &kp RET     &trans      &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans                  &trans       &trans      &trans      &trans      &trans      &trans  
+                &trans      &trans      &trans      &trans      &trans      &trans                  &trans       &trans      &trans      &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans       &trans      &trans      &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans       &trans      &trans      &trans      &trans      &trans 
+                            &trans      &trans      &trans      &trans      &kp SPC                 &mt RSFT RET &trans      &trans      &trans      &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
         mac_layer {
             bindings = <
-                &trans      &trans      &trans      &trans      &trans      &trans                  &trans      &trans      &trans      &trans      &trans      &trans  
-                &trans      &trans      &trans      &trans      &trans      &trans                  &trans      &trans      &trans      &trans      &trans      &trans
-                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans 
-                            &kp LCTL    &kp LALT    &kp LGUI    &trans      &trans                  &trans      &trans      &kp RGUI    &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans                  &trans       &trans      &trans      &trans      &trans      &trans  
+                &trans      &trans      &trans      &trans      &trans      &trans                  &trans       &trans      &trans      &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans       &trans      &trans      &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans       &trans      &trans      &trans      &trans      &trans 
+                            &kp LCTL    &kp LALT    &kp LGUI    &trans      &trans                  &trans       &trans      &kp RGUI    &trans      &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
         lower_layer {
             bindings = <
-                &kp DEL     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                  &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11  
-                &kp BKSP    &kp FSLH    &kp NUM_7   &kp NUM_8   &kp NUM_9   &kp PLUS                &kp CARET   &kp LBKT    &kp RBKT    &kp AT      &kp EXCL    &trans
-                &kp EQUAL   &kp NUM_0   &kp NUM_4   &kp NUM_5   &kp NUM_6   &kp MINUS   &kp UARW    &kp PIPE    &kp LPAR    &kp RPAR    &kp HASH    &kp TILDE   &trans
-                &kp DOT     &kp STAR    &kp NUM_1   &kp NUM_2   &kp NUM_3   &kp UNDER   &kp DARW    &kp GRAV    &kp LBRC    &kp RBRC    &kp AMPS    &kp PRCNT   &kp SQT
-                            &trans      &trans      &trans      &trans      &trans                  &trans      &mo ADJUST  &trans      &trans      &trans
+                &kp DEL     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                  &kp F6       &kp F7      &kp F8      &kp F9      &kp F10     &kp F11  
+                &kp BKSP    &kp FSLH    &kp NUM_7   &kp NUM_8   &kp NUM_9   &kp PLUS                &kp CARET    &kp LBKT    &kp RBKT    &kp AT      &kp EXCL    &trans
+                &kp EQUAL   &kp NUM_0   &kp NUM_4   &kp NUM_5   &kp NUM_6   &kp MINUS   &kp UARW    &kp PIPE     &kp LPAR    &kp RPAR    &kp HASH    &kp TILDE   &trans
+                &kp DOT     &kp STAR    &kp NUM_1   &kp NUM_2   &kp NUM_3   &kp UNDER   &kp C_MUTE  &kp GRAV     &kp LBRC    &kp RBRC    &kp AMPS    &kp PRCNT   &kp SQT
+                            &trans      &trans      &trans      &trans      &trans                  &trans       &mo ADJUST  &trans      &trans      &trans
             >;
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
@@ -105,12 +118,23 @@
         
         adjust_layer {
             bindings = <
-                &bootloader &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans      &trans      &trans      &trans      &trans      &bt BT_CLR        
-                &trans      &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_BRI &rgb_ug RGB_BRD                 &trans      &trans      &trans      &trans      &trans      &trans
-                &kp CAPS    &rgb_ug RGB_HUI &rgb_ug RGB_HUD &rgb_ug RGB_SAI &rgb_ug RGB_SAD &trans          &kp C_VOL_UP    &trans      &trans      &trans      &trans      &trans      &trans  
-                &trans      &trans          &trans          &trans          &trans          &trans          &kp C_VOL_DN    &tog MOD    &tog MAC    &trans      &trans      &trans      &trans  
-                            &trans          &trans          &trans          &trans          &trans                          &trans      &trans      &trans      &trans      &trans
+                &bootloader &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans      &trans      &trans       &trans      &trans      &bt BT_CLR        
+                &trans      &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_BRI &rgb_ug RGB_BRD                 &trans      &trans      &trans       &trans      &trans      &trans
+                &kp CAPS    &rgb_ug RGB_HUI &rgb_ug RGB_HUD &rgb_ug RGB_SAI &rgb_ug RGB_SAD &trans          &kp C_VOL_UP    &trans      &trans      &trans       &trans      &trans      &trans  
+                &trans      &trans          &trans          &trans          &trans          &trans          &kp C_VOL_DN    &tog MOD    &tog MAC    &tog WORKMAN &trans      &trans      &trans  
+                            &trans          &trans          &trans          &trans          &trans                          &trans      &trans      &trans       &trans      &trans
             >;
+        };
+
+        workman_layer {
+            bindings = <
+                &kp GRAV    &kp N1      &kp N2      &kp N3      &kp N4    &kp N5                    &kp N6       &kp N7      &kp N8      &kp N9      &kp N0      &kp BKSP
+                &kp TAB     &kp Q       &kp D       &kp R       &kp W     &kp B                     &kp J        &kp F       &kp U       &kp P       &kp SCLN    &kp BSLH
+                &kp ESC     &kp A       &kp S       &kp H       &kp T     &kp G         &kp RARW    &kp Y        &kp N       &kp E       &kp O       &kp I       &kp RET
+                &kp LSFT    &kp Z       &kp X       &kp M       &kp C     &kp V         &kp C_MUTE  &kp K        &kp L       &kp CMMA    &kp DOT     &kp FSLH    &mt RSFT SQT
+                            &kp LCTL    &kp LGUI   &kp LALT     &mo LOWER &kp SPC                   &mt RSFT RET &mo RAISE   &kp RALT    &kp LARW    &kp RARW
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
     };
