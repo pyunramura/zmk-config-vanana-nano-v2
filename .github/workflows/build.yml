@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: zmkfirmware/zmk-build-arm:2.5
-    name: dELIKEEb firmware (Waaffle/Vanana)
+    name: dELIKEEb firmware (Vanana)
     steps:
       - name: Checkout
         uses: actions/checkout@v2
