@@ -16,7 +16,6 @@
 #define LOWER   3
 #define RAISE   4
 #define ADJUST  5
-#define WORKMAN 6
 
 // / {
 //     behaviors {
@@ -40,19 +39,6 @@
 // | Esc   |   A  |   S  |   D  |   F   |   G   |   | Right |  |   H   |   J   |   K  |   L  |   ;   | Enter |
 // ----------------------------------------------   ---------  -----------------------------------------------
 // | Shift |   Z  |   X  |   C  |   V   |   B   |   | Mute  |  |   N   |   M   |   ,  |   .  |   /   | "     |
-// ----------------------------------------------   ---------  -----------------------------------------------
-//         | Ctrl | GUI  |  Alt | Lower | Space |              | Enter | Raise | Alt  | Left | Right |
-//         --------------------------------------              ---------------------------------------
-// 
-// WORKMAN
-// ----------------------------------------------              -----------------------------------------------
-// |   `   |   1  |   2  |   3  |   4   |   5   |              |   6   |   7   |   8  |   9  |   0   | Bksp  |
-// ----------------------------------------------              -----------------------------------------------
-// | Tab   |   Q  |   D  |   R  |   W   |   B   |              |   J   |   F   |   U  |   P  |   ;   | \     |
-// ----------------------------------------------   ---------  -----------------------------------------------
-// | Esc   |   A  |   S  |   H  |   T   |   G   |   | Right |  |   Y   |   N   |   E  |   O  |   I   | Enter |
-// ----------------------------------------------   ---------  -----------------------------------------------
-// | Shift |   Z  |   X  |   M  |   C   |   V   |   | Mute  |  |   K   |   L   |   ,  |   .  |   /   | "     |
 // ----------------------------------------------   ---------  -----------------------------------------------
 //         | Ctrl | GUI  |  Alt | Lower | Space |              | Enter | Raise | Alt  | Left | Right |
 //         --------------------------------------              ---------------------------------------
@@ -124,17 +110,6 @@
                 &trans      &trans          &trans          &trans          &trans          &trans          &kp C_VOL_DN    &tog MOD    &tog MAC    &tog WORKMAN &trans      &trans      &trans  
                             &trans          &trans          &trans          &trans          &trans                          &trans      &trans      &trans       &trans      &trans
             >;
-        };
-
-        workman_layer {
-            bindings = <
-                &kp GRAV    &kp N1      &kp N2      &kp N3      &kp N4    &kp N5                    &kp N6       &kp N7      &kp N8      &kp N9      &kp N0      &kp BKSP
-                &kp TAB     &kp Q       &kp D       &kp R       &kp W     &kp B                     &kp J        &kp F       &kp U       &kp P       &kp SCLN    &kp BSLH
-                &kp ESC     &kp A       &kp S       &kp H       &kp T     &kp G         &kp RARW    &kp Y        &kp N       &kp E       &kp O       &kp I       &kp RET
-                &kp LSFT    &kp Z       &kp X       &kp M       &kp C     &kp V         &kp C_MUTE  &kp K        &kp L       &kp CMMA    &kp DOT     &kp FSLH    &mt RSFT SQT
-                            &kp LCTL    &kp LGUI   &kp LALT     &mo LOWER &kp SPC                   &mt RSFT RET &mo RAISE   &kp RALT    &kp LARW    &kp RARW
-            >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
     };
