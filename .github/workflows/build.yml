@@ -10,9 +10,9 @@ jobs:
     name: dELIKEEb firmware (Vanana)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Cache west modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-zephyr-modules
         with:
@@ -46,7 +46,7 @@ jobs:
       - name: Rename zmk.uf2
         run: cp build/zephyr/zmk.uf2 vanana-rev2-nano_v2.uf2
       - name: Archive (vanana_rev2)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v6
         with:
           name: firmware
           path: vanana-rev2-nano_v2.uf2
