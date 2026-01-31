@@ -21,7 +21,7 @@
 include:
 
   - board: nice_nano
-    shield: vanana
+    shield: vanana_rev2
 
 ## To build with ZMK Studio support, uncomment the following block
 ## by removing the leading '#' from each line.
